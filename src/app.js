@@ -21,6 +21,7 @@ app.use(helmet())
 
 const allowedOrigins = [
     "http://localhost:5173",
+    "https://store-api-task.onrender.com"
 ]
 
 app.use(cors({
