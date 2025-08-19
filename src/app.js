@@ -4,7 +4,7 @@ const morgan = require("morgan")
 const helmet = require('helmet')
 const cors = require('cors')
 const path = require('path')
-// const rateLimit = require('express-rate-limit')
+const rateLimit = require('express-rate-limit')
 
 const authRoutes = require('./routes/auth.routes')
 const productRoutes = require('./routes/product.routes')
@@ -13,11 +13,11 @@ app.use(express.json())
 app.use(morgan("dev"))
 app.use(helmet())
 
-// const limiter = rateLimit({
-//     windowMs: 15 * 60 * 1000,
-//     max: 100,
-// })
-// app.use(limiter)
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+})
+app.use(limiter)
 
 const allowedOrigins = [
     "http://localhost:5173",
