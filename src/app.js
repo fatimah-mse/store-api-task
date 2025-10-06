@@ -38,6 +38,11 @@ app.use(cors({
     credentials: true
 }))
 
+app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin")
+    next()
+})
+
 app.use(express.static(path.join(__dirname, '../public/uploads')))
 app.use(express.urlencoded({ extended: true }))
 
