@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit')
 
 const authRoutes = require('./routes/auth.routes')
 const productRoutes = require('./routes/product.routes')
+const userRoutes = require('./routes/user.routes')
 
 app.use(express.json())
 app.use(morgan("dev"))
@@ -42,6 +43,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
 
 app.get('/healthz', (req, res) => { res.status(200).send('OK') })
 
